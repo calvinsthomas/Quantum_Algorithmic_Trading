@@ -42,12 +42,11 @@ vqc = VQC(num_qubits=2, feature_map=circuit, ansatz=circuit, optimizer=optimizer
 
 # Replace get_new_data with actual, using asyncio
 async def get_new_data():
-    # Placeholder function, new data from real-time datafeed
-    # This function interacts with data source to get new data
+    # Replace function for data from real-time streaming datafeed
     await asyncio.sleep(1)
     return np.random.rand(1), np.random.rand(13)
 
-#using real-time streaming XLF and bond price, rates data
+# Using real-time streaming XLF and bond rates data
 async def realtime_qml(xlf_closing_prices, bond_rates):
     # Concatenates the XLF closing prices and bond rates
     data = np.concatenate((xlf_closing_prices.reshape(-1, 1), bond_rates), axis=1)
