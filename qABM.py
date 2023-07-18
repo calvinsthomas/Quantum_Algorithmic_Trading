@@ -1,3 +1,5 @@
+# Quantum Agent-Based Modeling, aka qABM
+
 from collections import defaultdict
 from dwave.system.samplers import DWaveSampler
 from dwave.system.composites import EmbeddingComposite
