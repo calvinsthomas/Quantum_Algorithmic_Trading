@@ -70,31 +70,31 @@ async def realtime_qml(xlf_closing_prices, bond_rates):
 # Updating real-time: PCA 1, 2 feature values, strategy returns and portfolio returns as pca1, pca2, strategy_return, portfolio_return
 asset1_perc_change = 0.01
 asset2_perc_change = 0.02
-pca1 = 0.5  # update this value in real time
-pca2 = 0.4  # update this value in real time
-strategy_return = 0.6  # update this value in real time
-portfolio_return = 0.7  # update this value in real time
+pca1 = 0.5
+pca2 = 0.4
+strategy_return = 0.6
+portfolio_return = 0.7
 
 # Series of (6) Quantum Gate Operations. Changing the quantum state reflects the changing asset price 1 and 2, PCA 1, 2 feature values intraday, algo strategy returns, and portfolio returns
 # Initialize a quantum circuit
 qc = QuantumCircuit(6)
 
-# Apply a rotation gate on the first qubit based on asset 1 price percentage change .01
+# Apply a rotation gate on the 1st qubit based on asset 1 price percentage change .01
 qc.append(RXGate(asset1_perc_change), [0])
 
-# Apply a rotation gate on the second qubit based on asset 2 price percentage change .02
+# Apply a rotation gate on the 2nd qubit based on asset 2 price percentage change .02
 qc.append(RXGate(asset2_perc_change), [1])
 
-# Apply a rotation gate on the third qubit based on PCA 1
+# Apply a rotation gate on the 3rd qubit based on PCA 1
 qc.append(RXGate(pca1), [2])
 
-# Apply a rotation gate on the fourth qubit based on PCA 2
+# Apply a rotation gate on the 4th qubit based on PCA 2
 qc.append(RXGate(pca2), [3])
 
-# Apply a rotation gate on the fifth qubit based on strategy_return
+# Apply a rotation gate on the 5th qubit based on strategy_return
 qc.append(RXGate(strategy_return), [4])
 
-# Apply a rotation gate on the sixth qubit based on portfolio_return
+# Apply a rotation gate on the 6th qubit based on portfolio_return
 qc.append(RXGate(portfolio_return), [5])
 
 print(qc)
@@ -109,7 +109,7 @@ async def event_loop():
 loop = asyncio.get_event_loop()
 
 if loop.is_running():
-    # In an interactive environment, such as Jupyter notebook, run in the existing loop
+    # For interactive environments (i.e. Jupyter notebooks), run in the existing loop
     task = loop.create_task(event_loop())
 else:
     # If no event loop is running, create a new one and run
@@ -121,6 +121,7 @@ else:
 # For distributed systems, handling multiple real-time tasks
 # Each stream (changing asset prices, PCA 1, 2...) representing 1 local machine each
 # Changing the quantum state for each quantum circuit run on a local machine (computer): reflecting the changing asset prices, PCA 1, 2 feature values intraday, algo strategy returns, and portfolio returns
+# Comment-Out
 import multiprocessing
 
 def update_asset_prices():
