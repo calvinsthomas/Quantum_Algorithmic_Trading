@@ -1,4 +1,4 @@
-# Quantum Agent-Based Modeling, aka qABM
+# Quantum Agent-Based Modeling, qABM
 
 from collections import defaultdict
 from dwave.system.samplers import DWaveSampler
